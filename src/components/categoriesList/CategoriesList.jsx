@@ -2,8 +2,8 @@ import "./categoriesList.scss";
 
 const CategoriesList = () => {
   return (
-    <ul>
-      <li>Все</li>
+    <ul className="categories-list list">
+      <li className="active">Все</li>
       <li>Мясные</li>
       <li>Вегетарианская</li>
       <li>Гриль</li>

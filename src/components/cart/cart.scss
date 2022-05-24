@@ -25,14 +25,13 @@
     font-weight: 700;
     font-size: 16px;
     line-height: 19px;
-
+    text-align: center;
     color: #ffffff;
 
     padding-left: 13px;
 
     &::before {
       content: url(../../assets/icons/cart.svg);
-      text-align: match-parent;
       margin-right: 5px;
     }
   }
