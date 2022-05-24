@@ -1,7 +1,10 @@
+import Header from "./components/header/Header";
+import "./assets/scss/main.scss";
+
 function App() {
   return (
     <div className="App">
-      <h1>Start react pizza</h1>
+      <Header />
     </div>
   );
 }
