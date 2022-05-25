@@ -21,6 +21,10 @@ const PizzaList = () => {
             <li>40 см.</li>
           </ul>
         </div>
+        <div className="pizza-block__bottom">
+          <span>от 395 ₽</span>
+          <button>Добавить </button>
+        </div>
       </li>
     </ul>
   );
