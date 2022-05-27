@@ -7,9 +7,9 @@ const Sort = () => {
         <p>Сортировка по:</p>
         <span>популярности</span>
       </div>
-      <div class="sort__popup">
+      <div className="sort__popup">
         <ul className="list">
-          <li class="active">популярности</li>
+          <li className="active">популярности</li>
           <li>цене</li>
           <li>алфавиту</li>
         </ul>
