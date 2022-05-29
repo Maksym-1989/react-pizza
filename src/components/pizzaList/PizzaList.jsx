@@ -1,4 +1,3 @@
-import { useState } from "react";
 import pizzas from "../../db.json";
 import PizzaListItem from "../pizzaListItem/PizzaListItem";
 import "./pizzaList.scss";
