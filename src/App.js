@@ -1,26 +1,21 @@
 import Header from "./components/header/Header";
 import "./assets/scss/main.scss";
 import "./app.scss";
-import CategoriesList from "./components/categoriesList/CategoriesList";
-import Sort from "./components/sort/Sort";
-import PizzaList from "./components/pizzaList/PizzaList";
+import Home from "./pages/Home";
+import { Route, Routes } from "react-router-dom";
+import Cart from "./pages/Cart";
+import NotFound from "./pages/NotFound";
 
 function App() {
   return (
     <div className="App">
       <Header />
       <main>
-        <section className="section">
-          <div className="container">
-            <div className="navigation-block">
-              <CategoriesList />
-              <Sort />
-            </div>
-            <div className="pizza-block">
-              <PizzaList />
-            </div>
-          </div>
-        </section>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
       </main>
     </div>
   );
