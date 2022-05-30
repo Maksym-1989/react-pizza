@@ -1,11 +1,11 @@
 import Cart from "../cart/Cart";
 import Logo from "../logo/Logo";
-import "./header.scss";
+import styles from "./header.module.scss";
 const Header = () => {
   return (
-    <header className="header">
+    <header className={styles.header}>
       <div className="container">
-        <div className="header__wrapper">
+        <div className={styles.header__wrapper}>
           <Logo />
           <Cart />
         </div>
