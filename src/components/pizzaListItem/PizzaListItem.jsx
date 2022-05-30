@@ -13,14 +13,14 @@ const PizzaListItem = ({ id, imageUrl, name, types, sizes, price }) => {
   };
 
   return (
-    <li className="pizza-block__item" key={id}>
+    <li className="pizza-block__item">
       <img className="pizza-block__image" src={imageUrl} alt={name} />
       <h4 className="pizza-block__title">{name}</h4>
       <div className="pizza-block__selector">
         <ul className="list">
           {types.map((type, idx) => (
             <li
-              onClick={() => setTypeIndex(type)}
+              onClick={() => setTypeIndex(idx)}
               className={typeIndex === idx ? "active" : ""}
               key={idx}
             >
