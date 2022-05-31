@@ -3,8 +3,8 @@ import "./assets/scss/main.scss";
 import "./app.scss";
 import Home from "./pages/home/Home";
 import { Route, Routes } from "react-router-dom";
-import Cart from "./pages/Cart";
-import NotFound from "./pages/NotFound";
+import Cart from "./pages/cart/Cart";
+import NotFound from "./pages/notFound/NotFound";
 
 function App() {
   return (
