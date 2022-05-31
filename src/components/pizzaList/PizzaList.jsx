@@ -1,8 +1,9 @@
+import { useEffect, useState } from "react";
+
 import PizzaListItem from "../pizzaListItem/PizzaListItem";
 import axios from "axios";
 import Sceleton from "../sceleton/Sceleton";
-import "./pizzaList.scss";
-import { useEffect, useState } from "react";
+import styles from "./PizzaList.module.scss";
 
 const PizzaList = () => {
   const [pizzas, setPizzas] = useState([]);
@@ -17,7 +18,7 @@ const PizzaList = () => {
       });
   }, []);
   return (
-    <ul className="pizza-block list">
+    <ul className={styles.pizza_block}>
       {isLoading
         ? [...new Array(9)].map((_, idx) => <Sceleton key={idx} />)
         : pizzas.map((obj) => <PizzaListItem {...obj} key={obj.id} />)}

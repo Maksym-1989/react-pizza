@@ -1,11 +1,11 @@
 import { Link } from "react-router-dom";
-import "./cart.scss";
+import styles from "./Cart.module.scss";
 const Cart = () => {
   return (
-    <div className="cart">
+    <div className={styles.cart}>
       <Link to="/cart" className="link">
-        <span className="cart__price">520 ₽</span>
-        <span className="cart__amount">3</span>
+        <span className={styles.cart__price}>520 ₽</span>
+        <span className={styles.cart__amount}>3</span>
       </Link>
     </div>
   );

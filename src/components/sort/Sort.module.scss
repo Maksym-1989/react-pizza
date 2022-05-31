@@ -1,9 +1,9 @@
 .sort {
+  position: relative;
+
   &__label {
     display: flex;
-    position: relative;
-
-    text-align: center;
+    width: 250px;
 
     font-style: normal;
     font-weight: 700;
@@ -13,12 +13,11 @@
     letter-spacing: 0.015em;
 
     color: #2c2c2c;
+
+    margin-left: auto;
   }
 
   & p::before {
-    display: inline-flex;
-    align-items: baseline;
-
     content: url(../../assets/icons/up.svg);
     margin-right: 7px;
   }
@@ -27,10 +26,9 @@
     margin-left: 10px;
     color: var(--accent-cl);
     border-bottom: 1px dashed #fe5f1e;
+    cursor: pointer;
   }
   &__popup {
-    position: relative;
-
     bottom: 0;
     right: 0;
     background: #ffffff;
@@ -39,26 +37,32 @@
 
     width: 140px;
 
-    & .list {
-      display: block;
+    &_list {
       position: absolute;
-      bottom: -120px;
-      right: -105px;
-    }
+      bottom: -137px;
+      right: -5px;
+      list-style: none;
+      & li {
+        font-style: normal;
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 17px;
 
-    & li {
-      font-style: normal;
-      font-weight: 400;
-      font-size: 14px;
-      line-height: 17px;
+        letter-spacing: 0.015em;
 
-      letter-spacing: 0.015em;
+        cursor: pointer;
 
-      padding: 10px 15px;
+        padding: 10px 15px;
+        background-color: rgb(240, 233, 233, 0.85);
+
+        &:hover {
+          background-color: rgba(189, 179, 175, 0.8);
+        }
+      }
     }
 
     & .active {
-      background: rgba(254, 95, 30, 0.05);
+      background: rgba(189, 179, 175, 0.8);
       color: var(--accent-cl);
       font-weight: bold;
     }

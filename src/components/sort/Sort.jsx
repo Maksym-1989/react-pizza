@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./sort.scss";
+import styles from "./Sort.module.scss";
 
 const Sort = () => {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,17 +15,17 @@ const Sort = () => {
   };
 
   return (
-    <div className="sort">
-      <div className="sort__label">
+    <div className={styles.sort}>
+      <div className={styles.sort__label}>
         <p>Сортировка по:</p>
         <span onClick={() => setIsVisible(!isVisible)}>{sort}</span>
       </div>
       {isVisible && (
-        <div className="sort__popup">
-          <ul className="list">
+        <div className={styles.sort__popup}>
+          <ul className={styles.sort__popup_list}>
             {list.map((name, idx) => (
               <li
-                className={selected === idx ? "active" : ""}
+                className={selected === idx ? styles.active : ""}
                 key={idx}
                 onClick={() => onClickSortCategori(name, idx)}
               >

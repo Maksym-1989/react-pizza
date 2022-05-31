@@ -1,6 +1,12 @@
-.categories-list {
+.categories_list {
   display: flex;
+  flex-wrap: wrap;
   gap: 10px;
+  list-style: none;
+
+  @media (max-width: 1279px) {
+    justify-content: center;
+  }
 
   & li {
     font-style: normal;
@@ -15,6 +21,8 @@
     padding: 15px 25px;
     background: #f9f9f9;
     border-radius: 30px;
+
+    cursor: pointer;
   }
 
   & .active {

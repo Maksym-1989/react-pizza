@@ -1,82 +1,87 @@
-.pizza-block {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 35px;
+.pizza_block__item {
+  width: 280px;
+  display: block;
+  margin: 0 auto;
+  transition: box-shadow 0.3s;
+  border-radius: 15px;
+  // padding: 5px;
 
-  padding: 58px 0;
-  &__item {
-    width: 280px;
+  &:hover {
+    box-shadow: 0 0 15px 0 rgb(0 0 0 / 20%);
   }
+}
 
-  &__image {
-    display: block;
-    margin: 0 auto 10px;
-  }
+.pizza_block__image {
+  display: block;
+  margin: 0 auto 10px;
+}
 
-  &__title {
-    font-style: normal;
-    font-weight: 800;
-    font-size: 18px;
-    line-height: 24px;
-    text-align: center;
-    letter-spacing: 0.01em;
+.pizza_block__title {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 18px;
+  line-height: 24px;
+  text-align: center;
+  letter-spacing: 0.01em;
 
-    color: #000000;
-  }
+  color: #000000;
+}
 
-  &__selector {
-    background-color: #f3f3f3;
-    border-radius: 10px;
+.pizza_block__selector {
+  background-color: #f3f3f3;
+  border-radius: 10px;
 
-    & ul {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 8px;
-    }
-    & li {
-      font-style: normal;
-      font-weight: 700;
-      font-size: 14px;
-      line-height: 17px;
-      text-align: center;
-      letter-spacing: 0.015em;
-      cursor: pointer;
-
-      color: #2c2c2c;
-
-      width: 100%;
-
-      padding-top: 8px;
-      padding-bottom: 8px;
-
-      &.active {
-        background-color: #ffffff;
-        box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
-        border-radius: 5px;
-      }
-    }
-  }
-
-  &__bottom {
+  & ul {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 15px;
-    padding-bottom: 15px;
+    padding: 8px;
   }
-
-  &__bottom-price {
+  & li {
     font-style: normal;
     font-weight: 700;
-    font-size: 22px;
-    line-height: 27px;
-    letter-spacing: 0.015em;
+    font-size: 14px;
+    line-height: 17px;
     text-align: center;
+    letter-spacing: 0.015em;
+    cursor: pointer;
 
-    color: #000000;
+    color: #2c2c2c;
+
+    width: 100%;
+
+    padding-top: 8px;
+    padding-bottom: 8px;
+
+    &.active {
+      background-color: #ffffff;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.04);
+      border-radius: 5px;
+    }
   }
 }
+
+.pizza_block__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.pizza_block__bottom_price {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 22px;
+  line-height: 27px;
+  letter-spacing: 0.015em;
+  text-align: center;
+
+  color: #000000;
+}
+
 /////////////////////////////////button////////////////////////////////
 .button {
   display: flex;

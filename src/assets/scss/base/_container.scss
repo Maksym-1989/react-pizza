@@ -6,11 +6,11 @@
   margin-left: auto;
 
   @include mq(mobile) {
-    max-width: 480px;
+    // max-width: 480px;
   }
 
   @include mq(tablet) {
-    max-width: 768px;
+    // max-width: 768px;
     padding-left: 30px;
     padding-right: 30px;
   }
