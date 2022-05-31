@@ -1,0 +1,46 @@
+.cart {
+  &__wrapper {
+    width: 820px;
+    margin: 0 auto;
+  }
+  &__top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 30px;
+  }
+
+  &__title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    letter-spacing: 0.01em;
+
+    &::before {
+      content: url(../../assets/icons/cart2.svg);
+      margin-right: 10px;
+    }
+  }
+
+  &__clear_all_button {
+    display: flex;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+
+    color: #b6b6b6;
+    border: none;
+    background-color: inherit;
+
+    &::before {
+      content: url(../../assets/icons/delete.svg);
+      margin-right: 7px;
+    }
+  }
+  &__list {
+    list-style: none;
+  }
+}
