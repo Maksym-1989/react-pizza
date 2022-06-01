@@ -1,0 +1,51 @@
+.cart_empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  &__span {
+    font-size: 70px;
+  }
+
+  &__title {
+    font-style: normal;
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 39px;
+    letter-spacing: 0.01em;
+  }
+  &__text {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 145.4%;
+    text-align: center;
+    letter-spacing: 0.01em;
+    color: #777777;
+
+    max-width: 540px;
+    margin-bottom: 47px;
+  }
+
+  &__button {
+    width: 210px;
+    height: 46px;
+    background-color: #282828;
+    border-radius: 30px;
+    border: none;
+
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+    text-align: center;
+    letter-spacing: 0.015em;
+
+    color: #ffffff;
+
+    &:hover {
+      background-color: #5a5858;
+    }
+  }
+}
