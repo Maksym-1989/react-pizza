@@ -1,8 +1,6 @@
-import { useState } from "react";
 import styles from "./categoriesList.module.scss";
 
-const CategoriesList = () => {
-  const [activeIndex, setActiveIndex] = useState(0);
+const CategoriesList = ({ value, setCategories }) => {
   const categories = [
     "Все",
     "Мясные",
@@ -16,9 +14,9 @@ const CategoriesList = () => {
     <ul className={styles.categories_list}>
       {categories.map((category, idx) => (
         <li
-          className={activeIndex === idx ? styles.active : ""}
+          className={value === idx ? styles.active : ""}
           key={idx}
-          onClick={() => setActiveIndex(idx)}
+          onClick={() => setCategories(idx)}
         >
           {category}
         </li>

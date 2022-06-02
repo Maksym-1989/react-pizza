@@ -7,14 +7,16 @@ import styles from "./PizzaList.module.scss";
 
 const PizzaList = () => {
   const [pizzas, setPizzas] = useState([]);
-  const [isLoading, setisLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true);
+  console.log(pizzas);
 
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get("https://6294a42663b5d108c19025fe.mockapi.io/api/v1/items")
       .then((res) => {
         setPizzas(res.data);
-        setisLoading(false);
+        setIsLoading(false);
       });
   }, []);
   return (

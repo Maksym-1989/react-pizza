@@ -1,14 +1,13 @@
 import { useState } from "react";
 import styles from "./Sort.module.scss";
 
-const Sort = () => {
+const Sort = ({ value, setSelected }) => {
   const [isVisible, setIsVisible] = useState(false);
-  const [selected, setSelected] = useState(0);
 
   const list = ["популярности", "цене", "алфавиту"];
   const [sort, setSort] = useState(list[0]);
 
-  const onClickSortCategori = (name, index) => {
+  const onClickSort = (name, index) => {
     setSelected(index);
     setSort(name);
     setIsVisible(false);
@@ -25,9 +24,9 @@ const Sort = () => {
           <ul className={styles.sort__popup_list}>
             {list.map((name, idx) => (
               <li
-                className={selected === idx ? styles.active : ""}
+                className={value === idx ? styles.active : ""}
                 key={idx}
-                onClick={() => onClickSortCategori(name, idx)}
+                onClick={() => onClickSort(name, idx)}
               >
                 {name}
               </li>
