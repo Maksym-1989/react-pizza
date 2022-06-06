@@ -4,7 +4,10 @@ import CategoriesList from "../../components/categoriesList/CategoriesList";
 import Sort from "../../components/sort/Sort";
 import PizzaList from "../../components/pizzaList/PizzaList";
 
+import { categories } from "../../components/categoriesList/CategoriesList";
+
 import styles from "./Home.module.scss";
+console.log(categories);
 
 const Home = () => {
   const [categoriesActive, setCategoriesActive] = useState(0);
@@ -20,8 +23,11 @@ const Home = () => {
           />
           <Sort value={selected} setSelected={setSelected} />
         </div>
-        <div className="pizza-block">
-          <PizzaList />
+        <div className={styles.pizza_block}>
+          <h2 className={styles.pizza_block__title}>
+            {categories[categoriesActive]}
+          </h2>
+          <PizzaList category={categoriesActive} sortIdx={selected} />
         </div>
       </div>
     </section>
