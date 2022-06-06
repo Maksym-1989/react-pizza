@@ -6,9 +6,13 @@ import Sceleton from "../sceleton/Sceleton";
 import styles from "./PizzaList.module.scss";
 import { list } from "../sort/Sort";
 
-const PizzaList = ({ category, sortIdx }) => {
+const PizzaList = ({ category, sortIdx, search }) => {
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+
+  const filteredPizzas = pizzas.filter(({ name }) =>
+    name.toLowerCase().includes(search.toLowerCase())
+  );
 
   useEffect(() => {
     setIsLoading(true);
@@ -22,12 +26,12 @@ const PizzaList = ({ category, sortIdx }) => {
         setPizzas(res.data);
         setIsLoading(false);
       });
-  }, [category, sortIdx]);
+  }, [category, sortIdx, search]);
   return (
     <ul className={styles.pizza_block}>
       {isLoading
         ? [...new Array(9)].map((_, idx) => <Sceleton key={idx} />)
-        : pizzas.map((obj) => <PizzaListItem {...obj} key={obj.id} />)}
+        : filteredPizzas.map((obj) => <PizzaListItem {...obj} key={obj.id} />)}
     </ul>
   );
 };

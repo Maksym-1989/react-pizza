@@ -1,0 +1,42 @@
+.search {
+  display: inline-block;
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  opacity: 0.4;
+  top: 7px;
+  left: 4px;
+  width: 22px;
+  height: 22px;
+}
+
+.input {
+  font-size: 16px;
+  width: 300px;
+  border: 1px solid rgb(0, 0, 0, 0.2);
+  padding: 10px 30px;
+  transition: all 0.2s linear;
+  border-radius: 8px;
+
+  &:focus {
+    outline-style: none;
+    box-shadow: none;
+    border: 1px solid rgb(0, 0, 0, 0.6);
+  }
+}
+
+.clearIcon {
+  width: 18px;
+  height: 18px;
+  opacity: 0.3;
+  position: absolute;
+  right: 15px;
+  top: 11px;
+  cursor: pointer;
+
+  &:hover {
+    opacity: 0.8;
+  }
+}
