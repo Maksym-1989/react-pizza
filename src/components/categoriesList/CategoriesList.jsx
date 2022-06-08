@@ -1,4 +1,6 @@
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./categoriesList.module.scss";
+import { setCategoryIdx } from "../../redux/slices/filterSlice";
 
 export const categories = [
   "Все",
@@ -8,14 +10,17 @@ export const categories = [
   "Острые",
   "Закрытые",
 ];
-const CategoriesList = ({ value, setCategories }) => {
+const CategoriesList = () => {
+  const categoryIdx = useSelector((state) => state.filter.categoryIdx);
+  const dispatch = useDispatch();
+
   return (
     <ul className={styles.categories_list}>
       {categories.map((category, idx) => (
         <li
-          className={value === idx ? styles.active : ""}
+          className={categoryIdx === idx ? styles.active : ""}
           key={idx}
-          onClick={() => setCategories(idx)}
+          onClick={() => dispatch(setCategoryIdx(idx))}
         >
           {category}
         </li>

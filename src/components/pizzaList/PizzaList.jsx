@@ -1,17 +1,22 @@
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 import PizzaListItem from "../pizzaListItem/PizzaListItem";
-import axios from "axios";
 import Sceleton from "../sceleton/Sceleton";
 import styles from "./PizzaList.module.scss";
 import { list } from "../sort/Sort";
+import { useSelector } from "react-redux";
 
-const PizzaList = ({ category, sortIdx, search }) => {
+const PizzaList = () => {
   const [pizzas, setPizzas] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
 
+  const categoryIdx = useSelector((state) => state.filter.categoryIdx);
+  const sortIdx = useSelector((state) => state.filter.sortIdx);
+  const searchString = useSelector((state) => state.searchString);
+
   const filteredPizzas = pizzas.filter(({ name }) =>
-    name.toLowerCase().includes(search.toLowerCase())
+    name.toLowerCase().includes(searchString.toLowerCase())
   );
 
   useEffect(() => {
@@ -19,14 +24,14 @@ const PizzaList = ({ category, sortIdx, search }) => {
     axios
       .get(
         `https://6294a42663b5d108c19025fe.mockapi.io/api/v1/items?category=${
-          category !== 0 ? category : ""
+          categoryIdx !== 0 ? categoryIdx : ""
         }&sortBy=${list[sortIdx].sortProperty}`
       )
       .then((res) => {
         setPizzas(res.data);
         setIsLoading(false);
       });
-  }, [category, sortIdx, search]);
+  }, [categoryIdx, sortIdx]);
   return (
     <ul className={styles.pizza_block}>
       {isLoading
