@@ -1,11 +1,15 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import qs from "qs";
 
 import PizzaListItem from "../pizzaListItem/PizzaListItem";
 import Sceleton from "../sceleton/Sceleton";
+
 import styles from "./PizzaList.module.scss";
+
 import { list } from "../sort/Sort";
 import { useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const PizzaList = () => {
   const [pizzas, setPizzas] = useState([]);
@@ -19,6 +23,9 @@ const PizzaList = () => {
     name.toLowerCase().includes(searchString.toLowerCase())
   );
 
+  const navigate = useNavigate();
+  const params = qs.parse(useLocation().search.slice(1));
+
   useEffect(() => {
     setIsLoading(true);
     axios
@@ -31,7 +38,15 @@ const PizzaList = () => {
         setPizzas(res.data);
         setIsLoading(false);
       });
-  }, [categoryIdx, sortIdx]);
+
+    const queryString = qs.stringify({
+      category: categoryIdx,
+      sortBy: list[sortIdx].sortProperty,
+    });
+
+    navigate(`?${queryString}`);
+  }, [categoryIdx, sortIdx, navigate]);
+
   return (
     <ul className={styles.pizza_block}>
       {isLoading
