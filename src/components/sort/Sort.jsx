@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { setSortIdx } from "../../redux/slices/filterSlice";
 import styles from "./Sort.module.scss";
@@ -14,6 +14,8 @@ const Sort = () => {
   const sortIdx = useSelector((state) => state.filter.sortIdx);
   const dispatch = useDispatch();
 
+  const sortRef = useRef();
+
   const sortObj = list[sortIdx];
 
   const onClickSort = (index) => {
@@ -21,8 +23,20 @@ const Sort = () => {
     setIsVisible(false);
   };
 
+  const handleClickOutside = (e) => {
+    if (!e.path.includes(sortRef.current)) {
+      setIsVisible(false);
+    }
+  };
+
+  useEffect(() => {
+    document.body.addEventListener("click", handleClickOutside);
+
+    return () => document.body.removeEventListener("click", handleClickOutside);
+  }, []);
+
   return (
-    <div className={styles.sort}>
+    <div className={styles.sort} ref={sortRef}>
       <div className={styles.sort__label}>
         <p>Сортировка по:</p>
         <span onClick={() => setIsVisible(!isVisible)}>{sortObj.name}</span>
