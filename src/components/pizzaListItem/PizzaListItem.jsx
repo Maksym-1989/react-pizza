@@ -1,15 +1,10 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import {
-  setCartPizza,
-  setTotalPricePizzas,
-} from "../../redux/slices/cartSlice";
+import { addCartPizza } from "../../redux/slices/cartSlice";
 
 import styles from "./PizzaListitem.module.scss";
 
 const PizzaListItem = ({ id, imageUrl, name, types, sizes, price }) => {
-  const item = { id, imageUrl, name, types, sizes, price };
-
   const [pizzaCount, setPizzaCount] = useState(0);
   const [sizeIndex, setSyzeIndex] = useState(0);
   const [typeIndex, setTypeIndex] = useState(0);
@@ -18,9 +13,18 @@ const PizzaListItem = ({ id, imageUrl, name, types, sizes, price }) => {
 
   const typePizza = ["тонкое", "традиционное"];
 
+  const item = {
+    id,
+    imageUrl,
+    name,
+    types: typePizza[typeIndex],
+    sizes: sizes[sizeIndex],
+    price,
+    amount: 1,
+  };
+
   const addPizza = () => {
-    dispatch(setCartPizza(item));
-    dispatch(setTotalPricePizzas(price));
+    dispatch(addCartPizza(item));
     setPizzaCount(pizzaCount + 1);
   };
 
