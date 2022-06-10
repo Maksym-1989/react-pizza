@@ -4,7 +4,7 @@ const Cart = () => {
   return (
     <div className={styles.cart}>
       <Link to="/cart" className="link">
-        <span className={styles.cart__price}>520 ₽</span>
+        <span className={styles.cart__price}>520 ₴</span>
         <span className={styles.cart__amount}>3</span>
       </Link>
     </div>

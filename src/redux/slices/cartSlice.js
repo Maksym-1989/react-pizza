@@ -10,6 +10,9 @@ const cartSlice = createSlice({
   initialState,
   reducers: {
     addCartPizza: (state, { payload }) => {
+      // state.pizzas.push(payload);
+      // state.totalPricePizzas += payload.price;
+
       if (!current(state.pizzas).length) {
         state.pizzas.push(payload);
         return;
@@ -20,13 +23,20 @@ const cartSlice = createSlice({
         return;
       }
 
-      const idxType = current(state.pizzas).findIndex(
-        (item) => item.types === payload.types
-      );
-      const idxSize = current(state.pizzas).findIndex(
-        (item) => item.sizes === payload.sizes
-      );
+      // const idxType = current(state.pizzas).findIndex(
+      //   (item) => item.types === payload.types
+      // );
+      // const idxSize = current(state.pizzas).findIndex(
+      //   (item) => item.sizes === payload.sizes
+      // );
+      // console.log("size", idxSize);
 
+      // if (idxType === -1) {
+      //   state.pizzas.push(payload);
+      // }
+      // if (idxSize === -1) {
+      //   state.pizzas.push(payload);
+      // }
       // if (idxType >= 0) {
       //   state.pizzas[idxType].amount++;
       // }
@@ -34,9 +44,17 @@ const cartSlice = createSlice({
       //   state.pizzas[idxSize].amount++;
       // }
     },
+    removeAllPizzas: (state) => {
+      state.pizzas = [];
+      state.totalPricePizzas = 0;
+    },
+    deletePizza: (state, { payload }) => {
+      state.pizzas.filter((obj) => obj.id !== payload.id);
+      state.totalPricePizzas -= payload.price;
+    },
   },
 });
 
-export const { addCartPizza } = cartSlice.actions;
+export const { addCartPizza, removeAllPizzas, deletePizza } = cartSlice.actions;
 
 export default cartSlice.reducer;
