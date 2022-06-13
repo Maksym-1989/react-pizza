@@ -20,3 +20,16 @@
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
+.content__message {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  text-align: center;
+
+  & h2 {
+    font-size: 55px;
+  }
+  & p {
+    font-size: 35px;
+  }
+}
