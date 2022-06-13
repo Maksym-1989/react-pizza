@@ -43,7 +43,7 @@ const PizzaList = () => {
   return (
     <>
       {error ? (
-        <div className={styles.content__message}>
+        <div className={styles.error__message}>
           <h2>Произошла ошибка 😕</h2>
           <p>
             К сожалению, не удалось загрузить данные. Попробуйте повторить
