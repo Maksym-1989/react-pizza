@@ -1,4 +1,4 @@
-import Cart from "../cart/Cart";
+import Cart from "../cartAmountAndTotalPrice/cartAmountAndTotalPrice";
 import Logo from "../logo/Logo";
 import styles from "./header.module.scss";
 const Header = () => {

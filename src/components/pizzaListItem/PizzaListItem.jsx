@@ -14,7 +14,7 @@ const PizzaListItem = ({ id, imageUrl, name, types, sizes, price }) => {
   const typePizza = ["тонкое", "традиционное"];
 
   const item = {
-    id,
+    id: id.toString() + sizeIndex.toString() + typeIndex.toString(),
     imageUrl,
     name,
     types: typePizza[typeIndex],

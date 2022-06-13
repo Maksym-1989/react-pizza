@@ -1,60 +1,66 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   pizzas: [],
   totalPricePizzas: 0,
+  amount: 0,
 };
+
+const findById = (state, payload) =>
+  state.pizzas.find((item) => item.id === payload.id);
+
+const setAmount = (state) =>
+  state.pizzas.reduce((acc, item) => acc + item.amount, 0);
+const setTotalPrice = (state) =>
+  state.pizzas.reduce((acc, item) => (acc += item.price * item.amount), 0);
 
 const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
     addCartPizza: (state, { payload }) => {
-      // state.pizzas.push(payload);
-      // state.totalPricePizzas += payload.price;
-
-      if (!current(state.pizzas).length) {
+      const findItem = findById(state, payload);
+      if (findItem) {
+        findItem.amount++;
+      } else {
         state.pizzas.push(payload);
-        return;
-      }
-      const findItem = state.pizzas.find((item) => item.id === payload.id);
-      if (!Boolean(findItem)) {
-        state.pizzas.push(payload);
-        return;
       }
 
-      // const idxType = current(state.pizzas).findIndex(
-      //   (item) => item.types === payload.types
-      // );
-      // const idxSize = current(state.pizzas).findIndex(
-      //   (item) => item.sizes === payload.sizes
-      // );
-      // console.log("size", idxSize);
-
-      // if (idxType === -1) {
-      //   state.pizzas.push(payload);
-      // }
-      // if (idxSize === -1) {
-      //   state.pizzas.push(payload);
-      // }
-      // if (idxType >= 0) {
-      //   state.pizzas[idxType].amount++;
-      // }
-      // if (idxSize >= 0) {
-      //   state.pizzas[idxSize].amount++;
-      // }
+      state.totalPricePizzas += payload.price;
+      state.amount = setAmount(state);
     },
     removeAllPizzas: (state) => {
       state.pizzas = [];
       state.totalPricePizzas = 0;
+      state.amount = 0;
     },
     deletePizza: (state, { payload }) => {
-      state.pizzas.filter((obj) => obj.id !== payload.id);
-      state.totalPricePizzas -= payload.price;
+      state.pizzas = state.pizzas.filter((obj) => obj.id !== payload.id);
+      state.totalPricePizzas -= payload.price * payload.amount;
+      state.amount = setAmount(state);
+    },
+
+    increment: (state, { payload }) => {
+      const findItem = findById(state, payload);
+      findItem.amount++;
+      state.amount = setAmount(state);
+      state.totalPricePizzas = setTotalPrice(state);
+    },
+    decrement: (state, { payload }) => {
+      const findItem = findById(state, payload);
+      findItem.amount--;
+      state.amount = setAmount(state);
+      state.totalPricePizzas = setTotalPrice(state);
     },
   },
 });
 
-export const { addCartPizza, removeAllPizzas, deletePizza } = cartSlice.actions;
+export const {
+  addCartPizza,
+  removeAllPizzas,
+  deletePizza,
+  increment,
+  decrement,
+} = cartSlice.actions;
 
 export default cartSlice.reducer;

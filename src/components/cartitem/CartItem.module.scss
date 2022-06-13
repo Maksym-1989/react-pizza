@@ -6,9 +6,15 @@
     padding-top: 20px;
     padding-bottom: 20px;
   }
+  &__bottom_wrapper {
+    display: flex;
+    align-items: center;
+  }
   &__img {
     width: 80px;
+    margin-right: 25px;
   }
+
   &__item_subtitle {
     font-style: normal;
     font-weight: 700;

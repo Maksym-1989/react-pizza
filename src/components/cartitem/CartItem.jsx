@@ -1,26 +1,48 @@
+import { useDispatch } from "react-redux";
 import styles from "./CartItem.module.scss";
+import {
+  deletePizza,
+  increment,
+  decrement,
+} from "../../redux/slices/cartSlice";
 
-const CartItem = () => {
+const CartItem = ({ pizza }) => {
+  const dispatch = useDispatch();
+
+  const { id, imageUrl, name, price, sizes, types, amount } = pizza;
   return (
     <li className={styles.cart__item}>
-      <img
-        src="https://dodopizza-a.akamaihd.net/static/Img/Products/Pizza/ru-RU/b750f576-4a83-48e6-a283-5a8efb68c35d.jpg"
-        alt="pizza"
-        className={styles.cart__img}
-      />
-      <div className={styles.cart__item_description}>
-        <h3 className={styles.cart__item_subtitle}>Сырный цыпленок</h3>
-        <p className={styles.cart__item_text}>тонкое тесто, 26 см.</p>
+      <div className={styles.cart__bottom_wrapper}>
+        <img src={imageUrl} alt={name} className={styles.cart__img} />
+        <div className={styles.cart__item_description}>
+          <h3 className={styles.cart__item_subtitle}>{name}</h3>
+          <p className={styles.cart__item_text}>
+            {types} тесто, {sizes} см.
+          </p>
+        </div>
       </div>
       <div>
-        <button className={styles.cart__item_amount}>
+        <button
+          onClick={() => dispatch(decrement(pizza))}
+          className={styles.cart__item_amount}
+        >
           <span>-</span>
         </button>
-        <span className={styles.cart__item_amount_span}>2</span>
-        <button className={styles.cart__item_amount}>+</button>
+        <span className={styles.cart__item_amount_span}>{amount}</span>
+        <button
+          onClick={() => dispatch(increment(pizza))}
+          className={styles.cart__item_amount}
+        >
+          +
+        </button>
       </div>
-      <p className={styles.cart__item_price}>770 ₽</p>
-      <button className={styles.cart__item_delete}>+</button>
+      <p className={styles.cart__item_price}>{price * amount} ₽</p>
+      <button
+        onClick={() => dispatch(deletePizza(pizza))}
+        className={styles.cart__item_delete}
+      >
+        +
+      </button>
     </li>
   );
 };
