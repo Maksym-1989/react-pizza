@@ -1,17 +1,35 @@
 import { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addCartPizza } from "../../redux/slices/cartSlice";
 
 import styles from "./PizzaListitem.module.scss";
+const typePizza = ["тонкое", "традиционное"];
 
 const PizzaListItem = ({ id, imageUrl, name, types, sizes, price }) => {
-  const [pizzaCount, setPizzaCount] = useState(0);
   const [sizeIndex, setSyzeIndex] = useState(0);
   const [typeIndex, setTypeIndex] = useState(0);
 
+  const cartPizzas = useSelector((state) => state.cart.pizzas);
+  const currentPizza = cartPizzas.filter((item) => item.name === name);
+  const cartAmount = currentPizza?.reduce(
+    (acc, item) => (acc += item.amount),
+    0
+  );
   const dispatch = useDispatch();
 
-  const typePizza = ["тонкое", "традиционное"];
+  let currentPrice = 0;
+
+  switch (sizeIndex) {
+    case 1:
+      currentPrice = price + 50;
+      break;
+    case 2:
+      currentPrice = price + 100;
+      break;
+    default:
+      currentPrice = price;
+      break;
+  }
 
   const item = {
     id: id.toString() + sizeIndex.toString() + typeIndex.toString(),
@@ -19,13 +37,8 @@ const PizzaListItem = ({ id, imageUrl, name, types, sizes, price }) => {
     name,
     types: typePizza[typeIndex],
     sizes: sizes[sizeIndex],
-    price,
+    price: currentPrice,
     amount: 1,
-  };
-
-  const addPizza = () => {
-    dispatch(addCartPizza(item));
-    setPizzaCount(pizzaCount + 1);
   };
 
   return (
@@ -57,9 +70,14 @@ const PizzaListItem = ({ id, imageUrl, name, types, sizes, price }) => {
         </ul>
       </div>
       <div className={styles.pizza_block__bottom}>
-        <span className={styles.pizza_block__bottom_price}>от {price} ₽</span>
+        <span className={styles.pizza_block__bottom_price}>
+          от {currentPrice} ₽
+        </span>
 
-        <button className={styles.button} onClick={addPizza}>
+        <button
+          className={styles.button}
+          onClick={() => dispatch(addCartPizza(item))}
+        >
           <svg
             className={styles.button__svg}
             width="12"
@@ -70,8 +88,8 @@ const PizzaListItem = ({ id, imageUrl, name, types, sizes, price }) => {
             <path d="M10.8 4.8H7.2V1.2C7.2 0.5373 6.6627 0 6 0C5.3373 0 4.8 0.5373 4.8 1.2V4.8H1.2C0.5373 4.8 0 5.3373 0 6C0 6.6627 0.5373 7.2 1.2 7.2H4.8V10.8C4.8 11.4627 5.3373 12 6 12C6.6627 12 7.2 11.4627 7.2 10.8V7.2H10.8C11.4627 7.2 12 6.6627 12 6C12 5.3373 11.4627 4.8 10.8 4.8Z" />
           </svg>
           <p className={styles.button__text}>Добавить</p>
-          {pizzaCount !== 0 ? (
-            <span className={styles.button__span}>{pizzaCount}</span>
+          {cartAmount ? (
+            <span className={styles.button__span}>{cartAmount}</span>
           ) : (
             <></>
           )}

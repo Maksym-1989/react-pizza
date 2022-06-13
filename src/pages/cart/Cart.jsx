@@ -1,9 +1,9 @@
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import CartEmpty from "../../components/cartEmpty/CartEmpty";
 import CartItem from "../../components/cartitem/CartItem";
 import styles from "./Cart.module.scss";
 import { removeAllPizzas } from "../../redux/slices/cartSlice";
-import { useNavigate, useRoutes } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Cart = () => {
   const { pizzas, amount, totalPricePizzas } = useSelector(
@@ -11,6 +11,7 @@ const Cart = () => {
   );
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   return (
     <section className="section cart">
@@ -29,7 +30,7 @@ const Cart = () => {
               </div>
               <ul className={styles.cart__list}>
                 {pizzas.map((item) => (
-                  <CartItem pizza={item} />
+                  <CartItem pizza={item} key={item.id} />
                 ))}
               </ul>
               <div className={styles.cart__bottom}>

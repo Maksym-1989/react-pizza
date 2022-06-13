@@ -1,7 +1,9 @@
 import styles from "./CartEmpty.module.scss";
 import shopingCart from "../../assets/images/shopping-cart.png";
+import { useNavigate } from "react-router-dom";
 
 const CartEmpty = () => {
+  const navigate = useNavigate();
   return (
     <div className={styles.cart_empty}>
       <span className={styles.cart_empty__span}>😕</span>
@@ -15,7 +17,12 @@ const CartEmpty = () => {
         src={shopingCart}
         alt="shopping cart"
       />
-      <button className={styles.cart_empty__button}>Вернуться назад</button>
+      <button
+        onClick={() => navigate(-1)}
+        className={styles.cart_empty__button}
+      >
+        Вернуться назад
+      </button>
     </div>
   );
 };
