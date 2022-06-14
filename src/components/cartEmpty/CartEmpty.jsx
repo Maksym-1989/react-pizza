@@ -1,6 +1,8 @@
-import styles from "./CartEmpty.module.scss";
-import shopingCart from "../../assets/images/shopping-cart.png";
 import { useNavigate } from "react-router-dom";
+
+import shopingCart from "../../assets/images/shopping-cart.png";
+
+import styles from "./CartEmpty.module.scss";
 
 const CartEmpty = () => {
   const navigate = useNavigate();

@@ -1,15 +1,14 @@
 import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useLocation, useNavigate } from "react-router-dom";
 import qs from "qs";
+import { fetchPizzas } from "../../redux/slices/pizzasSlice";
+import { list } from "../sort/Sort";
 
 import PizzaListItem from "../pizzaListItem/PizzaListItem";
 import Sceleton from "../sceleton/Sceleton";
 
 import styles from "./PizzaList.module.scss";
-
-import { list } from "../sort/Sort";
-import { useDispatch, useSelector } from "react-redux";
-import { useLocation, useNavigate } from "react-router-dom";
-import { fetchPizzas } from "../../redux/slices/pizzasSlice";
 
 const PizzaList = () => {
   const dispatch = useDispatch();

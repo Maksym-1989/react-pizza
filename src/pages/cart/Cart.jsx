@@ -1,9 +1,11 @@
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+
 import CartEmpty from "../../components/cartEmpty/CartEmpty";
 import CartItem from "../../components/cartitem/CartItem";
-import styles from "./Cart.module.scss";
 import { removeAllPizzas } from "../../redux/slices/cartSlice";
-import { useNavigate } from "react-router-dom";
+
+import styles from "./Cart.module.scss";
 
 const Cart = () => {
   const { pizzas, amount, totalPricePizzas } = useSelector(

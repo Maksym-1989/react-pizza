@@ -1,12 +1,12 @@
+import { useSelector } from "react-redux";
+
 import CategoriesList from "../../components/categoriesList/CategoriesList";
 import Sort from "../../components/sort/Sort";
 import PizzaList from "../../components/pizzaList/PizzaList";
 import Search from "../../components/search/Serch";
-
 import { categories } from "../../components/categoriesList/CategoriesList";
 
 import styles from "./Home.module.scss";
-import { useSelector } from "react-redux";
 
 const Home = () => {
   const categoryIdx = useSelector((state) => state.filter.categoryIdx);

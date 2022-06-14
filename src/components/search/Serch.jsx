@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSearchString } from "../../redux/slices/searchSlice";
 import { useDebounce } from "../../helpers/hooks/useDebounce";
+import { setSearchString } from "../../redux/slices/searchSlice";
+
 import styles from "./Search.module.scss";
 
 const Serch = () => {

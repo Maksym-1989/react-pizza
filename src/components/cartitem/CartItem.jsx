@@ -1,10 +1,12 @@
 import { useDispatch } from "react-redux";
-import styles from "./CartItem.module.scss";
+
 import {
+  decrement,
   deletePizza,
   increment,
-  decrement,
 } from "../../redux/slices/cartSlice";
+
+import styles from "./CartItem.module.scss";
 
 const CartItem = ({ pizza }) => {
   const dispatch = useDispatch();

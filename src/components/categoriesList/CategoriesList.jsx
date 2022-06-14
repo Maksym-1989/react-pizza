@@ -1,7 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import styles from "./categoriesList.module.scss";
+
 import { setCategoryIdx } from "../../redux/slices/filterSlice";
 
+import styles from "./categoriesList.module.scss";
 export const categories = [
   "Все",
   "Мясные",

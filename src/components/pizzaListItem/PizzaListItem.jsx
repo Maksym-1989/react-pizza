@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { addCartPizza } from "../../redux/slices/cartSlice";
 
 import styles from "./PizzaListitem.module.scss";
+
 const typePizza = ["тонкое", "традиционное"];
 
 const PizzaListItem = ({ id, imageUrl, name, types, sizes, price }) => {
