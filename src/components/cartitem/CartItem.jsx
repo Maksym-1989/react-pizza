@@ -14,7 +14,7 @@ const CartItem = ({ pizza }) => {
   const { id, imageUrl, name, price, sizes, types, amount } = pizza;
   return (
     <li className={styles.cart__item}>
-      <div className={styles.cart__bottom_wrapper}>
+      <div className={styles.cart__top_wrapper}>
         <img src={imageUrl} alt={name} className={styles.cart__img} />
         <div className={styles.cart__item_description}>
           <h3 className={styles.cart__item_subtitle}>{name}</h3>
@@ -23,28 +23,30 @@ const CartItem = ({ pizza }) => {
           </p>
         </div>
       </div>
-      <div>
+      <div className={styles.cart__bottom_wrapper}>
+        <div>
+          <button
+            onClick={() => dispatch(decrement(pizza))}
+            className={styles.cart__item_amount}
+          >
+            <span>-</span>
+          </button>
+          <span className={styles.cart__item_amount_span}>{amount}</span>
+          <button
+            onClick={() => dispatch(increment(pizza))}
+            className={styles.cart__item_amount}
+          >
+            +
+          </button>
+        </div>
+        <p className={styles.cart__item_price}>{price * amount} ₽</p>
         <button
-          onClick={() => dispatch(decrement(pizza))}
-          className={styles.cart__item_amount}
-        >
-          <span>-</span>
-        </button>
-        <span className={styles.cart__item_amount_span}>{amount}</span>
-        <button
-          onClick={() => dispatch(increment(pizza))}
-          className={styles.cart__item_amount}
+          onClick={() => dispatch(deletePizza(pizza))}
+          className={styles.cart__item_delete}
         >
           +
         </button>
       </div>
-      <p className={styles.cart__item_price}>{price * amount} ₽</p>
-      <button
-        onClick={() => dispatch(deletePizza(pizza))}
-        className={styles.cart__item_delete}
-      >
-        +
-      </button>
     </li>
   );
 };

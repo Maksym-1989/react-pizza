@@ -2,13 +2,6 @@
   width: 280px;
   display: block;
   margin: 0 auto;
-  transition: box-shadow 0.3s;
-  border-radius: 15px;
-  // padding: 5px;
-
-  &:hover {
-    box-shadow: 0 0 15px 0 rgb(0 0 0 / 20%);
-  }
 }
 
 .pizza_block__image {

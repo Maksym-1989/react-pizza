@@ -2,6 +2,10 @@
   &__wrapper {
     width: 820px;
     margin: 0 auto;
+
+    @media (max-width: 870px) {
+      width: auto;
+    }
   }
   &__top {
     display: flex;

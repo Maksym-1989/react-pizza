@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, current } from "@reduxjs/toolkit";
 
 const initialState = {
   pizzas: [],
@@ -48,6 +48,7 @@ const cartSlice = createSlice({
     },
     decrement: (state, { payload }) => {
       const findItem = findById(state, payload);
+      if (current(findItem).amount <= 1) return;
       findItem.amount--;
       state.amount = setAmount(state);
       state.totalPricePizzas = setTotalPrice(state);
