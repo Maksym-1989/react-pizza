@@ -1,10 +1,11 @@
+import React from 'react'
 import { Link } from "react-router-dom";
 
 import logo from "../../assets/images/logo.png";
 
 import styles from "./Logo.module.scss";
 
-const Logo = () => {
+const Logo: React.FC = () => {
   return (
     <div className={styles.logo}>
       <Link className={styles.logo__link} to="/">

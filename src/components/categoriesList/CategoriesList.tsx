@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { setCategoryIdx } from "../../redux/slices/filterSlice";
 
 import styles from "./categoriesList.module.scss";
-export const categories = [
+
+export const categories: string[] = [
   "Все",
   "Мясные",
   "Вегетарианская",
@@ -11,8 +12,9 @@ export const categories = [
   "Острые",
   "Закрытые",
 ];
+
 const CategoriesList = () => {
-  const categoryIdx = useSelector((state) => state.filter.categoryIdx);
+  const categoryIdx = useSelector((state: any) => state.filter.categoryIdx);
   const dispatch = useDispatch();
 
   return (

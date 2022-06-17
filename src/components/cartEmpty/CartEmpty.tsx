@@ -1,10 +1,11 @@
+import React from 'react'
 import { useNavigate } from "react-router-dom";
 
 import shopingCart from "../../assets/images/shopping-cart.png";
 
 import styles from "./CartEmpty.module.scss";
 
-const CartEmpty = () => {
+const CartEmpty: React.FC = () => {
   const navigate = useNavigate();
   return (
     <div className={styles.cart_empty}>

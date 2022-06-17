@@ -1,3 +1,4 @@
+import React from 'react'
 import { useDispatch } from "react-redux";
 
 import {
@@ -8,10 +9,17 @@ import {
 
 import styles from "./CartItem.module.scss";
 
-const CartItem = ({ pizza }) => {
+
+type CartItemProps = {
+  pizza: {
+    imageUrl: string, name: string, price: number, sizes: number, types: number, amount: number, id: string
+  }
+}
+
+const CartItem: React.FC<CartItemProps> = ({ pizza }) => {
   const dispatch = useDispatch();
 
-  const { id, imageUrl, name, price, sizes, types, amount } = pizza;
+  const { imageUrl, name, price, sizes, types, amount } = pizza;
   return (
     <li className={styles.cart__item}>
       <div className={styles.cart__top_wrapper}>
