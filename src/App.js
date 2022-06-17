@@ -6,6 +6,7 @@ import NotFound from "./pages/notFound/NotFound";
 import MainLayout from "./components/mainLayout/MainLayout";
 
 import "./assets/scss/main.scss";
+
 import "./app.scss";
 
 function App() {
