@@ -1,3 +1,4 @@
+import { useDispatch } from 'react-redux';
 import { configureStore } from "@reduxjs/toolkit";
 import { combineReducers } from "redux";
 import {
@@ -43,5 +44,7 @@ const store = configureStore({
 });
 
 let persistor = persistStore(store);
-
+export type RootState = ReturnType<typeof rootReducer>
+export type AppDispatch = typeof store.dispatch
+export const useAppDispatch = () => useDispatch<AppDispatch>();
 export { store, persistor };

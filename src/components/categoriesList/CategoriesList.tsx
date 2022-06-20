@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 
 import { setCategoryIdx } from "../../redux/slices/filterSlice";
+import { RootState } from "../../redux/store";
 
 import styles from "./categoriesList.module.scss";
 
@@ -14,7 +15,7 @@ export const categories: string[] = [
 ];
 
 const CategoriesList = () => {
-  const categoryIdx = useSelector((state: any) => state.filter.categoryIdx);
+  const categoryIdx = useSelector((state: RootState) => state.filter.categoryIdx);
   const dispatch = useDispatch();
 
   return (

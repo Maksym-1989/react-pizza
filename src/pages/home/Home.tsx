@@ -7,9 +7,10 @@ import Search from "../../components/search/Serch";
 import { categories } from "../../components/categoriesList/CategoriesList";
 
 import styles from "./Home.module.scss";
+import { RootState } from "../../redux/store";
 
 const Home: React.FC = () => {
-  const categoryIdx = useSelector((state: any) => state.filter.categoryIdx);
+  const categoryIdx = useSelector((state: RootState) => state.filter.categoryIdx);
 
   return (
     <section className="section">

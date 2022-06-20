@@ -6,14 +6,13 @@ import {
   deletePizza,
   increment,
 } from "../../redux/slices/cartSlice";
+import { CartItemObj } from '../../redux/slices/cartSlice'
 
 import styles from "./CartItem.module.scss";
 
 
 type CartItemProps = {
-  pizza: {
-    imageUrl: string, name: string, price: number, sizes: number, types: number, amount: number, id: string
-  }
+  pizza: CartItemObj;
 }
 
 const CartItem: React.FC<CartItemProps> = ({ pizza }) => {

@@ -1,18 +1,37 @@
 import { createSlice, current } from "@reduxjs/toolkit";
 
-const initialState = {
+
+export type CartItemObj = {
+  id: string,
+  imageUrl:string,
+  name:string,
+  types: string,
+  sizes: number,
+  price: number,
+  amount: number,
+}
+
+interface CartSliceState {
+  pizzas: CartItemObj[],
+  totalPricePizzas: number,
+  amount: number,
+
+}
+
+const initialState:CartSliceState = {
   pizzas: [],
   totalPricePizzas: 0,
   amount: 0,
 };
 
-const findById = (state, payload) =>
-  state.pizzas.find((item) => item.id === payload.id);
+const findById = (state:CartSliceState, payload:CartItemObj) =>
+  state.pizzas.find(( item:CartItemObj) => item.id === payload.id);
 
-const setAmount = (state) =>
-  state.pizzas.reduce((acc, item) => acc + item.amount, 0);
-const setTotalPrice = (state) =>
-  state.pizzas.reduce((acc, item) => (acc += item.price * item.amount), 0);
+const setAmount = (state:CartSliceState) =>
+  state.pizzas.reduce((acc: number, item:CartItemObj) => acc + item.amount, 0);
+
+const setTotalPrice = (state:CartSliceState) =>
+  state.pizzas.reduce((acc: number, item:CartItemObj) => (acc += item.price * item.amount), 0);
 
 const cartSlice = createSlice({
   name: "cart",
@@ -41,15 +60,17 @@ const cartSlice = createSlice({
     },
 
     increment: (state, { payload }) => {
-      const findItem = findById(state, payload);
-      findItem.amount++;
+      const findItem: CartItemObj | undefined = findById(state, payload);
+      if (findItem) {      findItem.amount++;
+}
       state.amount = setAmount(state);
       state.totalPricePizzas = setTotalPrice(state);
     },
     decrement: (state, { payload }) => {
-      const findItem = findById(state, payload);
-      if (current(findItem).amount <= 1) return;
+      const findItem: CartItemObj | undefined = findById(state, payload);
+      if (findItem) {       if (current(findItem).amount <= 1) return;
       findItem.amount--;
+}
       state.amount = setAmount(state);
       state.totalPricePizzas = setTotalPrice(state);
     },

@@ -3,23 +3,25 @@ import { useDispatch, useSelector } from "react-redux";
 import { useLocation, useNavigate } from "react-router-dom";
 import qs from "qs";
 import { fetchPizzas } from "../../redux/slices/pizzasSlice";
+
 import { list } from "../sort/Sort";
 
 import PizzaListItem from "../pizzaListItem/PizzaListItem";
 import Sceleton from "../sceleton/Sceleton";
 
 import styles from "./PizzaList.module.scss";
+import { RootState, useAppDispatch } from "../../redux/store";
 
 const PizzaList = () => {
-  const dispatch = useDispatch();
+  const dispatch = useAppDispatch();
 
-  const categoryIdx = useSelector((state) => state.filter.categoryIdx);
-  const sortIdx = useSelector((state) => state.filter.sortIdx);
-  const searchString = useSelector((state) => state.searchString);
+  const categoryIdx = useSelector((state: RootState) => state.filter.categoryIdx);
+  const sortIdx = useSelector((state: RootState) => state.filter.sortIdx);
+  const searchString = useSelector((state: RootState) => state.searchString);
 
-  const pizzas = useSelector((state) => state.pizzas.items);
-  const isLoading = useSelector((state) => state.pizzas.loading);
-  const error = useSelector((state) => state.pizzas.error);
+  const pizzas = useSelector((state: RootState) => state.pizzas.items);
+  const isLoading = useSelector((state: RootState) => state.pizzas.loading);
+  const error = useSelector((state: RootState) => state.pizzas.error);
 
   const filteredPizzas = pizzas.filter(({ name }) =>
     name.toLowerCase().includes(searchString.toLowerCase())
@@ -48,15 +50,14 @@ const PizzaList = () => {
             К сожалению, не удалось загрузить данные. Попробуйте повторить
             попытку позже.
           </p>
-          <p>{error.message}</p>
         </div>
       ) : (
         <ul className={styles.pizza_block}>
           {isLoading
             ? [...new Array(9)].map((_, idx) => <Sceleton key={idx} />)
             : filteredPizzas.map((obj) => (
-                <PizzaListItem {...obj} key={obj.id} />
-              ))}
+              <PizzaListItem {...obj} key={obj.id} />
+            ))}
         </ul>
       )}
     </>

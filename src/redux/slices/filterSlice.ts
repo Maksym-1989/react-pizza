@@ -1,5 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+
+
+
 const initialState = {
   categoryIdx: 0,
   sortIdx: 0,

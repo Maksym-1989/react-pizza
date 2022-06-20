@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useDebounce } from "../../helpers/hooks/useDebounce";
 import { setSearchString } from "../../redux/slices/searchSlice";
+import { RootState } from "../../redux/store";
 
 import styles from "./Search.module.scss";
 
@@ -9,7 +10,7 @@ const Serch: React.FC = () => {
   const [value, setValue] = useState("");
 
   const dispatch = useDispatch();
-  const searchString = useSelector((state: any) => state.searchString);
+  const searchString = useSelector((state: RootState) => state.searchString);
 
   const inputValue = useDebounce(value, 400);
 

@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 import CartEmpty from "../../components/cartEmpty/CartEmpty";
 import CartItem from "../../components/cartitem/CartItem";
 import { removeAllPizzas } from "../../redux/slices/cartSlice";
+import { RootState } from "../../redux/store";
 
 import styles from "./Cart.module.scss";
 
 const Cart: React.FC = () => {
   const { pizzas, amount, totalPricePizzas } = useSelector(
-    (state: any) => state.cart
+    (state: RootState) => state.cart
   );
 
   const navigate = useNavigate();
@@ -31,7 +32,7 @@ const Cart: React.FC = () => {
                 </button>
               </div>
               <ul className={styles.cart__list}>
-                {pizzas.map((item: any) => (
+                {pizzas.map((item) => (
                   <CartItem pizza={item} key={item.id} />
                 ))}
               </ul>
