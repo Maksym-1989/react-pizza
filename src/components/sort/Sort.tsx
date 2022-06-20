@@ -32,11 +32,11 @@ const Sort: React.FC = () => {
     setIsVisible(false);
   };
 
-  const handleClickOutside = (e: any) => {
-    if (!e.path.includes(sortRef.current)) {
-      setIsVisible(false);
-    }
+
+  const handleClickOutside = (event: MouseEvent) => {
+    if (sortRef.current && !sortRef.current.contains(event.target as Node)) { setIsVisible(false); }
   };
+
 
   useEffect(() => {
     document.body.addEventListener("click", handleClickOutside);

@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useDebounce } from "../../helpers/hooks/useDebounce";
 import { setSearchString } from "../../redux/slices/searchSlice";
@@ -26,8 +26,8 @@ const Serch: React.FC = () => {
 
   };
 
-  const onChangeInput = (e: any) => {
-    setValue(e.target.value);
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
   };
 
   return (
@@ -41,7 +41,7 @@ const Serch: React.FC = () => {
         type="text"
         placeholder="Поиск..."
         value={value}
-        onChange={(e) => onChangeInput(e)}
+        onChange={(event) => onChangeInput(event)}
       />
       {searchString && (
         <svg
