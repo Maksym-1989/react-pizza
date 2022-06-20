@@ -1,15 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useDebounce } from "../../helpers/hooks/useDebounce";
 import { setSearchString } from "../../redux/slices/searchSlice";
 
 import styles from "./Search.module.scss";
 
-const Serch = () => {
+const Serch: React.FC = () => {
   const [value, setValue] = useState("");
 
   const dispatch = useDispatch();
-  const searchString = useSelector((state) => state.searchString);
+  const searchString = useSelector((state: any) => state.searchString);
 
   const inputValue = useDebounce(value, 400);
 
@@ -17,16 +17,17 @@ const Serch = () => {
     dispatch(setSearchString(inputValue));
   }, [dispatch, inputValue]);
 
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const onClickClear = () => {
     dispatch(setSearchString(""));
     setValue("");
-    inputRef.current.focus();
+    inputRef.current?.focus();
+
   };
 
-  const onChangeInput = (e) => {
-    setValue(e.target.value);
+  const onChangeInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setValue(event.target.value);
   };
 
   return (
@@ -40,7 +41,7 @@ const Serch = () => {
         type="text"
         placeholder="Поиск..."
         value={value}
-        onChange={(e) => onChangeInput(e)}
+        onChange={(event) => onChangeInput(event)}
       />
       {searchString && (
         <svg
