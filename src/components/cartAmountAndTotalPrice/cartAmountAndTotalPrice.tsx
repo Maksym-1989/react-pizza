@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 
 import styles from "./cartAmountAndTotalPrice.module.scss";
 
-const Cart = () => {
-  const totalPrice = useSelector((state) => state.cart.totalPricePizzas);
-  const amount = useSelector((state) => state.cart.amount);
+const Cart: React.FC = () => {
+  const totalPrice = useSelector((state: any) => state.cart.totalPricePizzas);
+  const amount = useSelector((state: any) => state.cart.amount);
   return (
     <div className={styles.cart}>
       <Link to="/cart" className="link">

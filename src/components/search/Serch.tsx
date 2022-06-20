@@ -5,11 +5,11 @@ import { setSearchString } from "../../redux/slices/searchSlice";
 
 import styles from "./Search.module.scss";
 
-const Serch = () => {
+const Serch: React.FC = () => {
   const [value, setValue] = useState("");
 
   const dispatch = useDispatch();
-  const searchString = useSelector((state) => state.searchString);
+  const searchString = useSelector((state: any) => state.searchString);
 
   const inputValue = useDebounce(value, 400);
 
@@ -17,15 +17,16 @@ const Serch = () => {
     dispatch(setSearchString(inputValue));
   }, [dispatch, inputValue]);
 
-  const inputRef = useRef();
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const onClickClear = () => {
     dispatch(setSearchString(""));
     setValue("");
-    inputRef.current.focus();
+    inputRef.current?.focus();
+
   };
 
-  const onChangeInput = (e) => {
+  const onChangeInput = (e: any) => {
     setValue(e.target.value);
   };
 

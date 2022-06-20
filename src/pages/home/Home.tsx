@@ -8,8 +8,8 @@ import { categories } from "../../components/categoriesList/CategoriesList";
 
 import styles from "./Home.module.scss";
 
-const Home = () => {
-  const categoryIdx = useSelector((state) => state.filter.categoryIdx);
+const Home: React.FC = () => {
+  const categoryIdx = useSelector((state: any) => state.filter.categoryIdx);
 
   return (
     <section className="section">

@@ -7,9 +7,9 @@ import { removeAllPizzas } from "../../redux/slices/cartSlice";
 
 import styles from "./Cart.module.scss";
 
-const Cart = () => {
+const Cart: React.FC = () => {
   const { pizzas, amount, totalPricePizzas } = useSelector(
-    (state) => state.cart
+    (state: any) => state.cart
   );
 
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const Cart = () => {
                 </button>
               </div>
               <ul className={styles.cart__list}>
-                {pizzas.map((item) => (
+                {pizzas.map((item: any) => (
                   <CartItem pizza={item} key={item.id} />
                 ))}
               </ul>
