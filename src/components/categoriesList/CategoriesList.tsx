@@ -1,3 +1,4 @@
+import { memo } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { setCategoryIdx } from "../../redux/slices/filterSlice";
@@ -14,7 +15,7 @@ export const categories: string[] = [
   "Закрытые",
 ];
 
-const CategoriesList: React.FC = () => {
+const CategoriesList = () => {
   const categoryIdx = useSelector((state: RootState) => state.filter.categoryIdx);
   const dispatch = useDispatch();
 

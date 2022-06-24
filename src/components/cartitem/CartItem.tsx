@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import { useDispatch } from "react-redux";
 
 import {
@@ -15,7 +15,7 @@ type CartItemProps = {
   pizza: CartItemObj;
 }
 
-const CartItem: React.FC<CartItemProps> = ({ pizza }) => {
+const CartItem: React.FC<CartItemProps> = memo(({ pizza }) => {
   const dispatch = useDispatch();
 
   const { imageUrl, name, price, sizes, types, amount } = pizza;
@@ -56,6 +56,6 @@ const CartItem: React.FC<CartItemProps> = ({ pizza }) => {
       </div>
     </li>
   );
-};
+});
 
 export default CartItem;
