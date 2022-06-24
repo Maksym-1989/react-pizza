@@ -3,15 +3,18 @@ import { useDispatch, useSelector } from "react-redux";
 
 import { addCartPizza } from "../../redux/slices/cartSlice";
 
+import { PizzasItem } from '../../redux/slices/pizzasSlice'
+import { RootState } from "../../redux/store";
+
 import styles from "./PizzaListitem.module.scss";
 
 const typePizza = ["тонкое", "традиционное"];
 
-const PizzaListItem = ({ id, imageUrl, name, types, sizes, price }) => {
+const PizzaListItem: React.FC<PizzasItem> = ({ id, imageUrl, name, types, sizes, price }) => {
   const [sizeIndex, setSyzeIndex] = useState(0);
   const [typeIndex, setTypeIndex] = useState(0);
 
-  const cartPizzas = useSelector((state) => state.cart.pizzas);
+  const cartPizzas = useSelector((state: RootState) => state.cart.pizzas);
   const currentPizza = cartPizzas.filter((item) => item.name === name);
   const cartAmount = currentPizza?.reduce(
     (acc, item) => (acc += item.amount),

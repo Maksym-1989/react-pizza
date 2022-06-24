@@ -14,7 +14,7 @@ export const categories: string[] = [
   "Закрытые",
 ];
 
-const CategoriesList = () => {
+const CategoriesList: React.FC = () => {
   const categoryIdx = useSelector((state: RootState) => state.filter.categoryIdx);
   const dispatch = useDispatch();
 

@@ -6,7 +6,7 @@ import { list } from "../../components/sort/Sort";
 
 type FetchPizzasArgs = {categoryIdx:number, sortIdx:number}
 
-type PizzasItem = {
+export type PizzasItem = {
   id: number,
   imageUrl:string,
   name:string,

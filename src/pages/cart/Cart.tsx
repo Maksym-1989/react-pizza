@@ -17,7 +17,7 @@ const Cart: React.FC = () => {
   const dispatch = useDispatch();
 
   return (
-    <section className="section cart">
+    <section className="section cart ">
       <div className="container">
         <div className={styles.cart__wrapper}>
           {pizzas.length > 0 ? (

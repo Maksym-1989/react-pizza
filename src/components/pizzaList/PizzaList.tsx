@@ -12,7 +12,7 @@ import Sceleton from "../sceleton/Sceleton";
 import styles from "./PizzaList.module.scss";
 import { RootState, useAppDispatch } from "../../redux/store";
 
-const PizzaList = () => {
+const PizzaList: React.FC = () => {
   const dispatch = useAppDispatch();
 
   const categoryIdx = useSelector((state: RootState) => state.filter.categoryIdx);
